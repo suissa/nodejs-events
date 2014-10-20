@@ -54,9 +54,8 @@ function Cagar (vontade) {
 
   events.EventEmitter.call(this);
 
-  this.vontadeDeCagar = function () {
-    console.log('alo mamae');
-    this.emit('vontadeDeCagar');
+  this.vontadeDeCagar = function (vontade) {
+    this.emit('vontadeDeCagar', vontade);
   }
 }
 
@@ -104,6 +103,6 @@ Caganeira.on('vontadeDeCagar', cagar);
 Caganeira.on('vontadeDeCagar', pegarPapelHigienico);
 Caganeira.on('vontadeDeCagar', limparABunda);
 Caganeira.on('vontadeDeCagar', passarBomAr);
-// console.log(Caganeira.vontadeDeCagar());
+
 Caganeira.vontadeDeCagar(vontade);
 
