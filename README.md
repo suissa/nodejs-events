@@ -6,12 +6,12 @@ Sim já que em um sistema imperativo você precisa mandar as ações executarem,
 
 Para isso usaremos o módulo `events` do Node.js:
 
-```
+```javascript
 var events = require('events');
 ```
 
 E instanciamos o [EventEmitter](http://nodejs.org/api/events.html#events_class_events_eventemitter) que é o responsável por criar e gerenciar nossos eventos.
-```
+```javascript
 var eventEmitter = new events.EventEmitter();
 ```
 
@@ -30,7 +30,7 @@ Porém nesse artigo utilizaremos apenas o `on` e o `emit` que são responsáveis
 
 Exemplo utilizando `on`:
 
-```
+```javascript
 // Criamos uma função que será chamada quando um evento acontecer
 var cagar = function () {
   console.log('cagando...');
@@ -42,7 +42,7 @@ eventEmitter.on('vontadeDeCagar', cagar);
 
 Exemplo utilizando `emit`:
 
-```
+```javascript
 // Emitimos o evento vontadeDeCagar desencadeando a execução da função cagar
 eventEmitter.emit('vontadeDeCagar');
 ```
@@ -51,7 +51,7 @@ eventEmitter.emit('vontadeDeCagar');
 
 Mas não paramos por ai, nós também podemos adicionar várias funções para um único evento, utilizando o `on` você pode passar quantas funções precisar que quando o evento for emitido elas serão executadas na sequência.
 
-```
+```javascript
 // Criamos as funções que serão chamadas quando o evento acontecer
 var correrParaOBanheiro = function () {
   console.log('correndo para o banheiro...');
@@ -87,7 +87,7 @@ Com isso já conseguimos criar um workflow baseado em eventos.
 
 É bem simples passarmos um JSON para um evento, precisamos apenas passar como parâmetro, olhe esse exemplo passando uma string:
 
-```
+```javascript
 var correrParaOBanheiro = function (vontade) {
   var velocidade = 'devagarosamente';
   if(vontade === 'alta') {
@@ -102,7 +102,7 @@ eventEmitter.emit('vontadeDeCagar', 'alta');
 
 E agora o exemplo utilizando JSON:
 
-```
+```javascript
 var correrParaOBanheiro = function (vontade) {
   var velocidade = 'devagarosamente';
   if (vontade.queredeira === 'dimais') {
@@ -134,7 +134,7 @@ Ficou bem fácil pensar baseado em eventos não?
 
 Mas há uma prática comumente usada na comunidade que é herdar a classe `eventEmitter`, para fazer isso vamos criar um objeto e herdar o *prototype* do `EventEmitter` e criar uma função que irá emitir nosso evento:
 
-```
+```javascript
 function Cagar (vontade) {
   this.vontade = vontade;
 
